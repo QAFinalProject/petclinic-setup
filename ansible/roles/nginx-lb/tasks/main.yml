@@ -2,12 +2,12 @@
 # tasks file for nginx-lb
 - name: copy nginx-lb file over
   copy:
-    src: /home/ubuntu/spring-petclinic/nginx.conf
+    src: /home/ubuntu/petclinic-setup/nginx.conf
     dest: /home/ubuntu/
 
 - name: Copy nginx-script-lb file
   copy:
-    src: /home/ubuntu/spring-petclinic/nginx-lb-script.sh
+    src: /home/ubuntu/petclinic-setup/nginx-lb-script.sh
     dest: /home/ubuntu/
     owner: ubuntu
     group: docker
