@@ -1,0 +1,47 @@
+---
+# tasks file for install-docker
+
+- name: Install required system packages
+  apt:
+    pkg:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - software-properties-common
+      - python3-pip
+      - python3-setuptools
+    state: latest
+    update_cache: true
+
+- name: Add Docker GPG apt Key
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+
+- name: Add Docker Repo
+  apt_repository:
+    repo: deb https://download.docker.com/linux/ubuntu focal stable
+    state: present
+
+- name: Install docker engine
+  apt:
+    pkg: 
+    - docker-ce
+    - docker-ce-cli
+    - containerd.io
+
+- name: check docker has started
+  service:
+    name: docker
+    state: started
+    enabled: yes
+
+- name: Add myself to docker group
+  user:
+    name: ubuntu
+    groups: docker
+    append: yes
+
+- name: Install Docker Module for Python
+  pip:
+    name: docker
