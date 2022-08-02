@@ -40,7 +40,7 @@ pipeline {
             stage('Deploy frontend') {
                 steps {
                     git branch: 'main', url: 'https://github.com/QAFinalProject/petclinic-setup.git'
-                    sh '''scp -i ~/.ssh/aws-key-london.pem /home/ubuntu/spring-petclinic/docker-compose.yaml ubuntu@3.8.89.70:/home/ubuntu/
+                    sh '''scp -i ~/.ssh/aws-key-london.pem /home/ubuntu/petclinic-setup/docker-compose.yaml ubuntu@3.8.89.70:/home/ubuntu/
                     ssh -i /home/jenkins/.ssh/aws-key-london.pem ubuntu@3.8.89.70 sudo docker stack deploy --compose-file docker-compose.yaml petclinic-stack'''
             }
         }

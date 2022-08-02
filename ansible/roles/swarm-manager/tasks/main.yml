@@ -9,7 +9,4 @@
   docker_swarm_info:
   register: swarm_info
 
-- name: output info
-  debug:
-    msg: "{{ swarm_info }}"
 
