@@ -8,5 +8,5 @@ resource "local_file" "tf_ansible_vars_file_new" {
     swarm-worker: ${aws_instance.swarm-worker.public_ip}
     nginx-lb: ${aws_instance.nginx.public_ip}
     DOC
-  filename = "./tf_ansible_vars_file.yml"
+  filename = "../ansible/tf_ansible_vars_file.yaml"
 }
