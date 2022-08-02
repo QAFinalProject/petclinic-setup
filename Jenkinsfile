@@ -7,7 +7,7 @@ pipeline {
     stages {
             stage('Ansible') {
                 steps {
-                    git branch: 'docker-compose', url: 'https://github.com/QAFinalProject/spring-petclinic.git'
+                    git branch: 'main', url: 'https://github.com/QAFinalProject/petclinic-setup.git'
                     sh 'ansible-playbook -i ~/.jenkins/workspace/petclinic/ansible/inventory.yaml ~/.jenkins/workspace/petclinic/ansible/playbook.yaml'
             }
         }
@@ -39,7 +39,7 @@ pipeline {
         // }
             stage('Deploy frontend') {
                 steps {
-                    git branch: 'docker-compose', url: 'https://github.com/QAFinalProject/spring-petclinic.git'
+                    git branch: 'main', url: 'https://github.com/QAFinalProject/petclinic-setup.git'
                     sh '''scp -i ~/.ssh/aws-key-london.pem /home/ubuntu/spring-petclinic/docker-compose.yaml ubuntu@18.132.244.237:/home/ubuntu/
                     ssh -i /home/jenkins/.ssh/aws-key-london.pem ubuntu@18.132.244.237 sudo docker stack deploy --compose-file docker-compose.yaml petclinic-stack'''
             }
