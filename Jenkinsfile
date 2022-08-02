@@ -44,9 +44,9 @@ pipeline {
                     ssh -i /home/jenkins/.ssh/aws-key-london.pem ubuntu@18.132.244.237 sudo docker stack deploy --compose-file docker-compose.yaml petclinic-stack'''
             }
         }
-        stage('Deploy nginx') {
-            steps {
-            sh 'ssh -i /home/jenkins/.ssh/aws-key-london.pem ubuntu@13.40.141.106 ./nginx-lb-script.sh'
+            stage('Deploy nginx') {
+                steps {
+                sh 'ssh -i /home/jenkins/.ssh/aws-key-london.pem ubuntu@13.40.141.106 ./nginx-lb-script.sh'
             }
         }
     }
