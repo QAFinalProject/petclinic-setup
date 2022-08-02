@@ -40,13 +40,13 @@ pipeline {
             stage('Deploy frontend') {
                 steps {
                     git branch: 'main', url: 'https://github.com/QAFinalProject/petclinic-setup.git'
-                    sh '''scp -i ~/.ssh/aws-key-london.pem /home/ubuntu/spring-petclinic/docker-compose.yaml ubuntu@18.132.244.237:/home/ubuntu/
-                    ssh -i /home/jenkins/.ssh/aws-key-london.pem ubuntu@18.132.244.237 sudo docker stack deploy --compose-file docker-compose.yaml petclinic-stack'''
+                    sh '''scp -i ~/.ssh/aws-key-london.pem /home/ubuntu/spring-petclinic/docker-compose.yaml ubuntu@3.8.89.70:/home/ubuntu/
+                    ssh -i /home/jenkins/.ssh/aws-key-london.pem ubuntu@3.8.89.70 sudo docker stack deploy --compose-file docker-compose.yaml petclinic-stack'''
             }
         }
             stage('Deploy nginx') {
                 steps {
-                sh 'ssh -i /home/jenkins/.ssh/aws-key-london.pem ubuntu@13.40.141.106 ./nginx-lb-script.sh'
+                sh 'ssh -i /home/jenkins/.ssh/aws-key-london.pem ubuntu@13.40.113.81 ./nginx-lb-script.sh'
             }
         }
     }
